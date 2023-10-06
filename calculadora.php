@@ -2,32 +2,43 @@
 
 class calculadora
 {
-	public function somar(float|int $num1, float|int$num2):float|int
-	{
-		return $num1+$num2 ;
+	public function somar(float|int $valor1, float|int...$valores):float|int
+{
+	foreach ($valores as $valor){
+		$valor1 += $valor;
 	}
-	public function subtrair(float|int $num1,float|int $num2):float|int
+	return $valor1;
+	}
+	public function subtrair(float|int $num1,float|int...$valores):float|int
 	{
-		return $num1-$num2 ;
+	foreach ($valores as $valor){
+		$num1 -= $valor;
+	}
+	return $num1;
 	}
 	
-	public function dividir (float|int $num1, float|int $num2):float|int
+	public function dividir (float|int $v1, float|int... $valores):float|int
 	{
-		return $num1/$num2 ; 
+	foreach ($valores as $valor){
+		$v1 /= $valor;
+	}
+	return $v1;
 	}
 	
-	public function multiplicar (float|int $num1, float|int $num2):float|int
+	public function multiplicar (float|int $n1, float|int... $valores):float|int
 	{
-		return $num1*$num2 ;
+foreach ($valores as $valor){
+		$n1 *= $valor;
 	}
+	return $n1;	}
 }
 $calculadora = new calculadora ;
-$soma=$calculadora->somar(5,2.7);
-$subtracao=$calculadora->subtrair(5,2.5);
-$divisao=$calculadora->dividir(10,5);
-$multiplicacao=$calculadora ->multiplicar(8,2);
+$soma=$calculadora->somar(5,2,-10);
+$subtracao=$calculadora->subtrair(-90,30,-50);
+$divisao=$calculadora->dividir(100,5,5);
+$multiplicacao=$calculadora ->multiplicar(8,2,-2);
 
-echo $soma . PHP_EOL;
-echo $subtracao . PHP_EOL;
-echo $divisao . PHP_EOL;
-echo $multiplicacao . PHP_EOL;
+echo ("O resultado da soma é = $soma"). PHP_EOL;
+echo (" O resultado da subtração é = $subtracao") . PHP_EOL;
+echo ("O resultado da divisão é = $divisao") . PHP_EOL;
+echo ("O resultado da multiplicação é = $multiplicacao") . PHP_EOL;
